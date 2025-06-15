@@ -2,8 +2,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from 'react';
+import { ShopContext } from '../context/shopContext';
 
 export const Mynav = () => {
+  const { cartItems } = useContext(ShopContext)
+  const itemCount = cartItems.reduce((prev, value) => {
+    return prev + value.count
+  }, 0)
   return (
     <div className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className='container'>
@@ -16,6 +22,7 @@ export const Mynav = () => {
           <li className="nav-item">
             <Link to='/cart' className='nav-link'>
               <FontAwesomeIcon icon={faShoppingCart} />
+              {itemCount > 0 && <span className="  badge rounded-pill bg-danger">{itemCount}</span>}
             </Link>
           </li>
         </ul>
