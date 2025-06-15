@@ -4,20 +4,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Shop } from './pages/shop/shop'
 import { Cart } from './pages/cart/cart'
 import { Mynav } from './components/Mynav'
+import { ShopContextProvider } from './context/shopContext'
 
 function App() {
 
   return (
     <div>
-      <Router>
-        <Mynav/>
+      <ShopContextProvider>
+        <Router>
+          <Mynav />
 
-        <Routes >
-          <Route path='/' element={<Shop />} />
-          <Route path='/cart' element={<Cart />} />
-        </Routes>
+          <Routes >
+            <Route path='/' element={<Shop />} />
+            <Route path='/cart' element={<Cart />} />
+          </Routes>
 
-      </Router>
+        </Router>
+      </ShopContextProvider>
 
     </div>
   )

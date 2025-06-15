@@ -1,14 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
-
-
 export const Mynav = () => {
   return (
-
     <div className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className='container'>
         <Link to='/' className='navbar-brand'>Home Shop</Link>
@@ -27,7 +23,7 @@ export const Mynav = () => {
     </div>
     // ...........................................
 
- 
+
 
   )
 }

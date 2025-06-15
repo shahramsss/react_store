@@ -1,27 +1,11 @@
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
+import { useContext } from "react";
+import { ShopContext } from "./context/shopContext";
 
 export const Product = (props) => {
-    const { id, productName, price, productImage } = props.data
+    const { id, productName, price, productImage } = props.data;
+    const { cartItems, addToCart, removeFromCart } = useContext(ShopContext)
+    const isIncart = cartItems.some((item) => item.id === id)
     return (
-
-        // <Card>
-        //     <Card.Img variant="top" src={productImage} />
-        //     <Card.Body>
-        //         <Card.Title>{productName}</Card.Title>
-
-        //     </Card.Body>
-        //     <Card.Footer>
-        //         <small classNameName="text-muted">Last updated 3 mins ago</small>
-        //     </Card.Footer>
-        // </Card>
-        // <div className="card">
-        //     <img src={productImage} classNameName="card-img-top w-100" alt="..." />
-        //     <div className="card-body">
-        //         <h5 className="card-title">{productName}</h5>
-        //         <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
-        //     </div>
-        // </div>
         <div className="col">
             <div className="card h-100">
                 <img src={productImage} className="card-img-top " alt="..." />
@@ -30,12 +14,16 @@ export const Product = (props) => {
                 </div>
                 <div className="card-footer">
                     <h5 className="card-title">price: {price}$</h5>
-                    <button className='btn btn-info'>+</button>
-                    <small className="text-body-secondary mx-1">0</small>
-                    <button className='btn btn-info'>-</button>
+                    <button className='btn btn-info w-25' onClick={() => addToCart(id)}>+</button>
+                    {isIncart &&<span className="text-body-secondary h5 mx-2">0
+                        {cartItems?.filter((row) => row.id === id)[0]?.count}
+                        {console.log(cartItems)}
+                    </span>}
+                    {isIncart &&
+                        <button className='btn btn-info w-25' onClick={() => removeFromCart(id)}>-</button>
+                    }
                 </div>
             </div>
         </div>
-
     )
 }
