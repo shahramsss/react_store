@@ -4,7 +4,7 @@ import { ShopContext } from "./context/shopContext";
 export const Product = (props) => {
     const { id, productName, price, productImage } = props.data;
     const { cartItems, addToCart, removeFromCart } = useContext(ShopContext)
-    const isIncart = cartItems.some((item) => item.id === id)
+    const isIncart = cartItems?.some((item) => item.id === id)
     return (
         <div className="col">
             <div className="card h-100">

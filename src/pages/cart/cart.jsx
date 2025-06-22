@@ -12,7 +12,7 @@ export const Cart = () => {
                 <div className="container">
                     <div className="row row-cols-1 row-cols-md-4 g-4">
                         {PRODUCTS.map((p) => {
-                            if (cartItems.some((i) => i.id === p.id && i.count > 0))
+                            if (cartItems?.some((i) => i.id === p.id && i.count > 0))
                                 return <Product data={p} />
                         })}
                     </div>
