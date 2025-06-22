@@ -5,6 +5,7 @@ import { Shop } from './pages/shop/shop'
 import { Cart } from './pages/cart/cart'
 import { Mynav } from './components/Mynav'
 import { ShopContextProvider } from './context/shopContext'
+import { Welcome } from './components/Welcome'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <div>
       <ShopContextProvider>
         <Router>
+          <Welcome />
           <Mynav />
 
           <Routes >
